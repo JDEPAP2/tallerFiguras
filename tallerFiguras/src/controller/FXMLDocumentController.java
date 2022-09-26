@@ -75,6 +75,16 @@ public class FXMLDocumentController implements Initializable {
 
 //------------------------------------------------------------------------------
 
+//        //Figura Circulo. Arreglar diametro a conveniencia(nPuntas).
+//        coorX = event.getX();
+//        coorY = event.getY();
+//        int diametro = 50;
+//        int radio = diametro/2;
+//        
+//        g.strokeOval(coorX, coorY, diametro, diametro); 
+
+//------------------------------------------------------------------------------
+
 //        //Figura Estrellas. Arreglar numero de lados a conveniencia(nPuntas). Para una estrellas de 5 lados, nPuntas debe ser el doble. 
 //        coorX = event.getX();
 //        coorY = event.getY();
@@ -97,12 +107,152 @@ public class FXMLDocumentController implements Initializable {
 
 //------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------
+//        //Figura Flecha Vista Izquierda. Arreglar medida del tamaño del lado a conveniencia(lado). 
+//        coorX = event.getX();
+//        coorY = event.getY();
+//        int lado = 80;
+//         
+//        arrCoorX = new double[8];
+//        arrCoorY = new double[8];
+//        
+//        arrCoorX[0] = coorX;
+//        arrCoorY[0] = coorY;
+//        
+//        arrCoorX[1] = coorX + lado*Math.cos(-1);
+//        arrCoorY[1] = coorY + lado*Math.sin(1);
+//        
+//        arrCoorX[2] = coorX + lado*Math.cos(-1);
+//        arrCoorY[2] = coorY + lado*Math.sin(0.5);
+//        
+//        arrCoorX[3] = coorX + (lado*4)*Math.cos(-1);
+//        arrCoorY[3] = coorY + lado*Math.sin(0.5);
+//        
+//        arrCoorX[4] = coorX + (lado*4)*Math.cos(-1);
+//        arrCoorY[4] = coorY + lado*Math.sin(-0.5);
+//        
+//        arrCoorX[5] = coorX + lado*Math.cos(-1);
+//        arrCoorY[5] = coorY + lado*Math.sin(-0.5);
+//        
+//        arrCoorX[6] = coorX + lado*Math.cos(-1);
+//        arrCoorY[6] = coorY + lado*Math.sin(-1);
+//        
+//        arrCoorX[7] = coorX;
+//        arrCoorY[7] = coorY;
+//                
+//        g.strokePolygon(arrCoorX, arrCoorY, arrCoorX.length);
 
 //------------------------------------------------------------------------------
 
+//        //Figura Flecha Vista Derecha. Arreglar medida del tamaño del lado a conveniencia(lado). 
+//        coorX = event.getX();
+//        coorY = event.getY();
+//        int lado = 80;
+//         
+//        arrCoorX = new double[8];
+//        arrCoorY = new double[8];
+//        
+//        arrCoorX[0] = coorX;
+//        arrCoorY[0] = coorY;
+//        
+//        arrCoorX[1] = coorX - lado*Math.cos(-1);
+//        arrCoorY[1] = coorY - lado*Math.sin(1);
+//        
+//        arrCoorX[2] = coorX - lado*Math.cos(-1);
+//        arrCoorY[2] = coorY - lado*Math.sin(0.5);
+//        
+//        arrCoorX[3] = coorX - (lado*4)*Math.cos(-1);
+//        arrCoorY[3] = coorY - lado*Math.sin(0.5);
+//        
+//        arrCoorX[4] = coorX - (lado*4)*Math.cos(-1);
+//        arrCoorY[4] = coorY - lado*Math.sin(-0.5);
+//        
+//        arrCoorX[5] = coorX - lado*Math.cos(-1);
+//        arrCoorY[5] = coorY - lado*Math.sin(-0.5);
+//        
+//        arrCoorX[6] = coorX - lado*Math.cos(-1);
+//        arrCoorY[6] = coorY - lado*Math.sin(-1);
+//        
+//        arrCoorX[7] = coorX;
+//        arrCoorY[7] = coorY;
+//                
+//        g.strokePolygon(arrCoorX, arrCoorY, arrCoorX.length);
+
 //------------------------------------------------------------------------------
 
+//        //Figura Flecha Vista Abajo. Arreglar medida del tamaño del lado a conveniencia(lado). 
+//        coorX = event.getX();
+//        coorY = event.getY();
+//        int lado = 80;
+//         
+//        arrCoorX = new double[8];
+//        arrCoorY = new double[8];
+//        
+//        arrCoorX[0] = coorX;
+//        arrCoorY[0] = coorY;
+//        
+//        arrCoorX[1] = coorX - lado*Math.sin(1);
+//        arrCoorY[1] = coorY - lado*Math.cos(-1);
+//        
+//        arrCoorX[2] = coorX - lado*Math.sin(0.5);
+//        arrCoorY[2] = coorY - lado*Math.cos(-1);
+//        
+//        arrCoorX[3] = coorX - lado*Math.sin(0.5);
+//        arrCoorY[3] = coorY - (lado*4)*Math.cos(-1);
+//        
+//        arrCoorX[4] = coorX - lado*Math.sin(-0.5);
+//        arrCoorY[4] = coorY - (lado*4)*Math.cos(-1);
+//        
+//        arrCoorX[5] = coorX - lado*Math.sin(-0.5);
+//        arrCoorY[5] = coorY - lado*Math.cos(-1);
+//        
+//        arrCoorX[6] = coorX - lado*Math.sin(-1);
+//        arrCoorY[6] = coorY - lado*Math.cos(-1);
+//        
+//        arrCoorX[7] = coorX;
+//        arrCoorY[7] = coorY;
+//                
+//        g.strokePolygon(arrCoorX, arrCoorY, arrCoorX.length);
+//------------------------------------------------------------------------------
+
+        //Figura Flecha Vista Arriba. Arreglar medida del tamaño del lado a conveniencia(lado). 
+        coorX = event.getX();
+        coorY = event.getY();
+        int lado = 80;
+         
+        arrCoorX = new double[8];
+        arrCoorY = new double[8];
+        
+        arrCoorX[0] = coorX;
+        arrCoorY[0] = coorY;
+        
+        arrCoorX[1] = coorX + lado*Math.sin(1);
+        arrCoorY[1] = coorY + lado*Math.cos(-1);
+        
+        arrCoorX[2] = coorX + lado*Math.sin(0.5);
+        arrCoorY[2] = coorY + lado*Math.cos(-1);
+        
+        arrCoorX[3] = coorX + lado*Math.sin(0.5);
+        arrCoorY[3] = coorY + (lado*4)*Math.cos(-1);
+        
+        arrCoorX[4] = coorX + lado*Math.sin(-0.5);
+        arrCoorY[4] = coorY + (lado*4)*Math.cos(-1);
+        
+        arrCoorX[5] = coorX + lado*Math.sin(-0.5);
+        arrCoorY[5] = coorY + lado*Math.cos(-1);
+        
+        arrCoorX[6] = coorX + lado*Math.sin(-1);
+        arrCoorY[6] = coorY + lado*Math.cos(-1);
+        
+        arrCoorX[7] = coorX;
+        arrCoorY[7] = coorY;
+                                
+        g.strokePolygon(arrCoorX, arrCoorY, arrCoorX.length);
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 
       }
