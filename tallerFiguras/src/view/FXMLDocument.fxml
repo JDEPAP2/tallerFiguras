@@ -1,14 +1,241 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.canvas.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="790.0" prefWidth="1043.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController">
     <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+      <Pane prefHeight="809.0" prefWidth="1044.0" style="-fx-border-color: #b1b1b1; -fx-background-color: #c1c1c1; -fx-border-width: 5;">
+         <children>
+            <MenuBar prefHeight="0.0" prefWidth="1043.0" style="-fx-background-color: #b1b1b1;">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#recuperarXML" text="Abrir" />
+                        <MenuItem mnemonicParsing="false" onAction="#guardarXML" text="Guardar" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#borrarLienzo" text="Borrar Lienzo" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Pane layoutX="16.0" layoutY="304.0" prefHeight="470.0" prefWidth="1012.0" style="-fx-border-color: #b1b1b1; -fx-background-radius: 20; -fx-background-color: white; -fx-border-radius: 10; -fx-border-width: 4;">
+               <children>
+                  <Canvas fx:id="canvaId" height="470.0" onMouseClicked="#printear" onMouseDragged="#printear" width="1013.0" />
+                  <Canvas fx:id="canvaId1" height="470.0" onMouseClicked="#printear" onMouseDragged="#printear" width="1013.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="19.0" layoutY="38.0" prefHeight="245.0" prefWidth="1006.0" style="-fx-border-color: #b1b1b1; -fx-background-radius: 15; -fx-background-color: #E6E6E6; -fx-border-radius: 9; -fx-border-width: 4;">
+               <children>
+                  <Pane layoutX="14.0" layoutY="45.0" prefHeight="156.0" prefWidth="380.0" style="-fx-border-color: #b1b1b1; -fx-background-color: white; -fx-border-radius: 9; -fx-border-width: 4; -fx-background-radius: 10;">
+                     <children>
+                        <ImageView fitHeight="34.0" fitWidth="31.0" layoutX="18.0" layoutY="20.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="20.0" fitWidth="34.0" layoutX="64.0" layoutY="21.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="28.0" fitWidth="27.0" layoutX="108.0" layoutY="20.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/3.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="155.0" layoutY="21.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/4.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="199.0" layoutY="20.0" opacity="0.76" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/5.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="29.0" layoutX="242.0" layoutY="21.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/6.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="288.0" layoutY="18.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/7.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="334.0" layoutY="17.0" opacity="0.76" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/8.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="31.0" fitWidth="30.0" layoutX="333.0" layoutY="62.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/16.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="26.0" fitWidth="31.0" layoutX="289.0" layoutY="65.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/15.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="26.0" fitWidth="27.0" layoutX="245.0" layoutY="66.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/14.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="26.0" layoutX="200.0" layoutY="65.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/13.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="29.0" fitWidth="27.0" layoutX="156.0" layoutY="64.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/12.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="27.0" layoutX="109.0" layoutY="64.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/11.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="64.0" layoutY="64.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/10.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="31.0" fitWidth="30.0" layoutX="17.0" layoutY="63.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/9.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="19.0" layoutY="110.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/17.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="29.0" fitWidth="27.0" layoutX="66.0" layoutY="108.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/18.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="111.0" layoutY="111.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/19.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="155.0" layoutY="111.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/20.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="22.0" fitWidth="29.0" layoutX="199.0" layoutY="112.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/21.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="246.0" layoutY="110.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/22.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="27.0" fitWidth="25.0" layoutX="290.0" layoutY="110.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/23.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="335.0" layoutY="111.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/24.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="A" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="B" layoutX="58.0" layoutY="13.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="40.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="C" layoutX="103.0" layoutY="13.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="D" layoutX="148.0" layoutY="13.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="E" layoutX="193.0" layoutY="13.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="F" layoutX="238.0" layoutY="13.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="G" layoutX="283.0" layoutY="13.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="H" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="I" layoutX="13.0" layoutY="58.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="J" layoutX="58.0" layoutY="58.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="K" layoutX="103.0" layoutY="58.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="L" layoutX="148.0" layoutY="58.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="M" layoutX="193.0" layoutY="58.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="N" layoutX="238.0" layoutY="58.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="O" layoutX="283.0" layoutY="58.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="P" layoutX="328.0" layoutY="58.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="Q" layoutX="13.0" layoutY="103.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" styleClass="Boton" textFill="#b1b1b1" />
+                        <Button fx:id="R" layoutX="58.0" layoutY="103.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="S" layoutX="103.0" layoutY="103.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="T" layoutX="148.0" layoutY="103.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="U" layoutX="193.0" layoutY="103.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="V" layoutX="238.0" layoutY="103.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" styleClass="Boton" />
+                        <Button fx:id="W" layoutX="284.0" layoutY="103.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="38.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <Button fx:id="X" layoutX="328.0" layoutY="103.0" mnemonicParsing="false" onAction="#tipoFigura" opacity="0.32" prefHeight="39.0" prefWidth="39.0" style="-fx-base: gray; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="404.0" layoutY="45.0" prefHeight="156.0" prefWidth="232.0" style="-fx-border-color: #b1b1b1; -fx-background-radius: 9; -fx-background-color: white; -fx-border-radius: 9; -fx-border-width: 4;">
+                     <children>
+                        <ColorPicker fx:id="colorTF" layoutX="20.0" layoutY="38.0" onAction="#color" prefHeight="30.0" prefWidth="193.0" style="-fx-background-color: #d0d0d0; -fx-background-radius: 9;" />
+                        <ColorPicker fx:id="colorTL" layoutX="20.0" layoutY="104.0" onAction="#color" prefHeight="30.0" prefWidth="193.0" style="-fx-background-color: #d0d0d0; -fx-background-radius: 9;" />
+                        <Text fill="#393939" layoutX="24.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relleno:" wrappingWidth="102.13671875">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#393939" layoutX="23.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Borde:" wrappingWidth="102.13671875">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="648.0" layoutY="45.0" prefHeight="156.0" prefWidth="342.0" style="-fx-border-color: #b1b1b1; -fx-background-color: white; -fx-background-radius: 9; -fx-border-radius: 9; -fx-border-width: 4;">
+                     <children>
+                        <Slider fx:id="slider" layoutX="23.0" layoutY="24.0" max="50.0" onMouseDragged="#grosor" prefHeight="46.0" prefWidth="249.0" value="0.5" />
+                        <Canvas fx:id="canvaL" height="46.0" layoutX="28.0" layoutY="80.0" width="293.0" />
+                        <Label fx:id="sText" layoutX="277.0" layoutY="34.0" prefHeight="26.0" prefWidth="40.0" text="1" textFill="#8d8d8d">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Text fill="#393939" layoutX="27.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Figuras" wrappingWidth="102.13671875">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#393939" layoutX="416.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colores" wrappingWidth="102.13671875">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#393939" layoutX="660.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grosor" wrappingWidth="102.13671875">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
     </children>
 </AnchorPane>
