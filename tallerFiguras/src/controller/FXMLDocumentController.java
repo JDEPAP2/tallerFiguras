@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
@@ -25,6 +26,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import static model.Tools.*;
 
 /**
@@ -32,7 +34,9 @@ import static model.Tools.*;
  * @author Juan
  */
 public class FXMLDocumentController implements Initializable {
-    
+
+    @FXML
+    private Text  t1,t2,t3,t4,t5;
     @FXML
     private Label sText;
     @FXML
@@ -43,6 +47,8 @@ public class FXMLDocumentController implements Initializable {
     private Slider slider;
     @FXML
     private MenuBar menu;
+    @FXML
+    private CheckBox check;
     private GraphicsContext g,g2,g3;
     private boolean estado;
     private double x,y;
@@ -67,6 +73,18 @@ public class FXMLDocumentController implements Initializable {
     private void borrarLienzo(ActionEvent event) {
         g.clearRect(0, 0, canvaId.getWidth(), canvaId.getHeight());
         g2.clearRect(0, 0, canvaId.getWidth(), canvaId.getHeight());
+    }
+    @FXML
+    private void checkB(ActionEvent event){
+        if(check.isPickOnBounds()){
+            g.setFill(Color.TRANSPARENT);
+            g2.setFill(Color.TRANSPARENT);
+            colorTF.setDisable(true);
+            t5.setDisable(true);
+        }else{
+            t5.setDisable(false);
+            colorTF.setDisable(false);
+        }
     }
     @FXML
     private void color(ActionEvent event) {
@@ -97,6 +115,7 @@ public class FXMLDocumentController implements Initializable {
         }
         switch(figura){
             case 'A':
+                crearLinea(event);
                 break;
             case 'B':
                 break;
@@ -149,6 +168,7 @@ public class FXMLDocumentController implements Initializable {
             case 'V':
                 break;
             case 'W':
+                crearPoligono(event,6);
                 break;            
         }
 
@@ -268,6 +288,48 @@ public class FXMLDocumentController implements Initializable {
             g.strokePolygon(arrCoorX, arrCoorY, arrCoorX.length);
             g.fillPolygon(arrCoorX, arrCoorY, arrCoorX.length);
             estado = false;        
+        }
+    }
+    
+    public void crearLinea(MouseEvent event){
+        double pX = event.getX();
+        double pY = event.getY();
+        
+        if(event.isShiftDown()){
+            double dx = pX - x;
+            double dy = pY - y;
+            double h = Math.sqrt(Math.pow(dx, 2)+Math.pow(dy, 2));
+            double dp = dx-dy;
+            if(dp < -20){
+                g2.clearRect(0, 0, canvaId.getWidth(), canvaId.getHeight());
+                g2.strokeLine(x, y, x, pY);
+                if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
+                    g.strokeLine(x, y, x, pY);                    
+                    estado = false;       
+                  }}
+            else{
+                if(dp > 20){
+                    g2.clearRect(0, 0, canvaId.getWidth(), canvaId.getHeight());
+                    g2.strokeLine(x, y, pX, y);
+                    if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
+                        g.strokeLine(x, y, pX, y);                    
+                        estado = false;       
+                    }
+                }else{
+                    g2.clearRect(0, 0, canvaId.getWidth(), canvaId.getHeight());
+                    g2.strokeLine(x, y, (h * Math.cos(45)) + x, (h * Math.sin(45)) + y);
+                    if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
+                        g.strokeLine(x, y, (h * Math.cos(45)) + x, (h * Math.sin(45)) + y);                    
+                        estado = false;       
+                    }
+                }}
+        }else{
+            g2.clearRect(0, 0, canvaId.getWidth(), canvaId.getHeight());
+            g2.strokeLine(x, y, pX, pY);
+            if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
+                    g.strokeLine(x, y, pX, pY);                    
+                    estado = false;       
+            }
         }
         
     }
