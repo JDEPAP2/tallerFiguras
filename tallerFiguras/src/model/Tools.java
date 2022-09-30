@@ -16,30 +16,22 @@ import javafx.stage.Stage;
  */
 public class Tools {
 
-    public static void openFileChooser() {
+    public static File openFileChooser() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open file");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
         fileChooser.getExtensionFilters().add(extFilter);
-        fileChooser.showOpenDialog(new Stage());
+        File file = fileChooser.showOpenDialog(new Stage());
+        return file;
     }
 
-    public static void saveFileChooser(String sampleText) throws FileNotFoundException {
+    public static File saveFileChooser() throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save file");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(new Stage());
-        if (file != null) {
-            try {
-                PrintWriter writer;
-                writer = new PrintWriter(file);
-                writer.println(sampleText);
-                writer.close();
-            } catch (Error ex) {
-                System.out.println(ex);
-            }
-        }
 
+        return file;
     }
 }

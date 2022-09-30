@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="790.0" prefWidth="1043.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController">
     <children>
-      <Pane prefHeight="809.0" prefWidth="1044.0" style="-fx-border-color: #b1b1b1; -fx-background-color: #c1c1c1; -fx-border-width: 5;">
+      <Pane prefHeight="819.0" prefWidth="1044.0" style="-fx-border-color: #b1b1b1; -fx-background-color: #c1c1c1; -fx-border-width: 5;">
          <children>
             <MenuBar prefHeight="0.0" prefWidth="1043.0" style="-fx-background-color: #b1b1b1;">
               <menus>
@@ -28,17 +28,17 @@
                     <MenuItem mnemonicParsing="false" onAction="#borrarLienzo" text="Borrar Lienzo" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
+                <Menu mnemonicParsing="false" onAction="#alerta" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#borrarLienzo" text="Help" />
+                     </items>
                 </Menu>
               </menus>
             </MenuBar>
             <Pane layoutX="16.0" layoutY="304.0" prefHeight="470.0" prefWidth="1012.0" style="-fx-border-color: #b1b1b1; -fx-background-radius: 20; -fx-background-color: white; -fx-border-radius: 10; -fx-border-width: 4;">
                <children>
                   <Canvas fx:id="canvaId" height="470.0" onMouseClicked="#printear" onMouseDragged="#printear" width="1013.0" />
-                  <Canvas fx:id="canvaId1" height="470.0" onMouseClicked="#printear" onMouseDragged="#printear" width="1013.0" />
+                  <Canvas fx:id="canvaId1" height="470.0" onMouseClicked="#printear" onMouseDragged="#printear" onMouseMoved="#mostrarCoor" width="1013.0" />
                </children>
             </Pane>
             <Pane layoutX="19.0" layoutY="38.0" prefHeight="245.0" prefWidth="1006.0" style="-fx-border-color: #b1b1b1; -fx-background-radius: 15; -fx-background-color: #E6E6E6; -fx-border-radius: 9; -fx-border-width: 4;">
@@ -193,16 +193,22 @@
                   </Pane>
                   <Pane layoutX="404.0" layoutY="45.0" prefHeight="156.0" prefWidth="232.0" style="-fx-border-color: #b1b1b1; -fx-background-radius: 9; -fx-background-color: white; -fx-border-radius: 9; -fx-border-width: 4;">
                      <children>
-                        <ColorPicker fx:id="colorTF" layoutX="20.0" layoutY="38.0" onAction="#color" prefHeight="30.0" prefWidth="193.0" style="-fx-background-color: #d0d0d0; -fx-background-radius: 9;" />
-                        <ColorPicker fx:id="colorTL" layoutX="20.0" layoutY="104.0" onAction="#color" prefHeight="30.0" prefWidth="193.0" style="-fx-background-color: #d0d0d0; -fx-background-radius: 9;" />
-                        <Text fill="#393939" layoutX="24.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relleno:" wrappingWidth="102.13671875">
+                        <ColorPicker fx:id="colorTL" layoutX="20.0" layoutY="38.0" onAction="#color" prefHeight="30.0" prefWidth="193.0" style="-fx-background-color: #d0d0d0; -fx-background-radius: 9;" />
+                        <ColorPicker fx:id="colorTF" layoutX="20.0" layoutY="104.0" onAction="#color" prefHeight="30.0" prefWidth="112.0" style="-fx-background-color: #d0d0d0; -fx-background-radius: 9;" />
+                        <Text fx:id="t5" fill="#393939" layoutX="20.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relleno:" wrappingWidth="102.13671875">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Text>
-                        <Text fill="#393939" layoutX="23.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Borde:" wrappingWidth="102.13671875">
+                        <Text fx:id="t4" fill="#393939" layoutX="20.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Borde:" wrappingWidth="102.13671875">
                            <font>
                               <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <CheckBox fx:id="check" layoutX="197.0" layoutY="111.0" mnemonicParsing="false" onAction="#checkB" prefHeight="17.0" prefWidth="0.0" scaleX="1.5" scaleY="1.5" scaleZ="1.5" style="-fx-base: #d0d0d0;" />
+                        <Text fill="#393939" layoutX="142.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sin Relleno" wrappingWidth="46.0">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
                            </font>
                         </Text>
                      </children>
@@ -218,23 +224,33 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Text fill="#393939" layoutX="27.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Figuras" wrappingWidth="102.13671875">
+                  <Text fx:id="t1" fill="#393939" layoutX="27.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Figuras" wrappingWidth="102.13671875">
                      <font>
                         <Font name="System Bold" size="23.0" />
                      </font>
                   </Text>
-                  <Text fill="#393939" layoutX="416.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colores" wrappingWidth="102.13671875">
+                  <Text fx:id="t2" fill="#393939" layoutX="416.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colores" wrappingWidth="102.13671875">
                      <font>
                         <Font name="System Bold" size="23.0" />
                      </font>
                   </Text>
-                  <Text fill="#393939" layoutX="660.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grosor" wrappingWidth="102.13671875">
+                  <Text fx:id="t3" fill="#393939" layoutX="660.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grosor" wrappingWidth="102.13671875">
                      <font>
                         <Font name="System Bold" size="23.0" />
                      </font>
                   </Text>
+                  <Label fx:id="alert" layoutX="20.0" layoutY="212.0" prefHeight="25.0" prefWidth="825.0" textFill="#0000008d">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
+            <Label fx:id="coor" layoutX="26.0" layoutY="780.0" prefHeight="25.0" prefWidth="169.0" textFill="#0000008d">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
     </children>

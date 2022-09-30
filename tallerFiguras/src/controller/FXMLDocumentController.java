@@ -4,28 +4,30 @@
  */
 package controller;
 
-import com.sun.javafx.geom.Rectangle;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.Slider;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import static model.Tools.*;
+import javafx.scene.shape.ArcType;
+import javafx.scene.text.Text;
+import model.Figura;
+import model.Punto2D;
+import static model.Utilidad.*;
+
 
 /**
  *
@@ -34,7 +36,9 @@ import static model.Tools.*;
 public class FXMLDocumentController implements Initializable {
     
     @FXML
-    private Label sText;
+    private Text  t1,t2,t3,t4,t5;
+    @FXML
+    private Label sText, coor, alert;
     @FXML
     private Canvas canvaId , canvaId1, canvaL;
     @FXML
@@ -43,25 +47,56 @@ public class FXMLDocumentController implements Initializable {
     private Slider slider;
     @FXML
     private MenuBar menu;
+    @FXML
+    private CheckBox check;
     private GraphicsContext g,g2,g3;
     private boolean estado;
     private double x,y;
     private char figura;
+    private double grosor;
+    private Color colorF;
+    private Color colorL;
+    private LinkedList<Figura> figuras;
+    private LinkedList<Punto2D> curva;
     DecimalFormat f;
     
-    
+    @FXML
+    private void checkB(ActionEvent event){
+        if(check.isSelected()){
+            g.setFill(Color.TRANSPARENT);
+            g2.setFill(Color.TRANSPARENT);
+            colorTF.setDisable(true);
+            t5.setDisable(true);
+        }else{
+            colorTF.setDisable(false);
+        }      
+    }
+    @FXML
+    private void alerta(ActionEvent event){
+        alert.setText("Si desea borrar el lienzo presion 'Edit' y despues 'Borrar Lienzo'");
+    }   
+    @FXML
+    private void mostrarCoor(MouseEvent event) {
+        Punto2D e = new Punto2D(event.getX(),event.getY());
+        coor.setText(e.toString());
+    }
     @FXML
     private void tipoFigura(ActionEvent event) {
         Button a = (Button) event.getTarget();
-        figura = a.getId().charAt(0); 
+        figura = a.getId().charAt(0);
+        alert.setText("Para crear una figura arrastre el mouse");
+        if(figura == 'B'){
+            curva.clear();
+        }
     }
     @FXML
     private void guardarXML(ActionEvent event) throws FileNotFoundException {
-        saveFileChooser("a");
+        if (crearArchivoXML(figuras)){
+            alert.setText("Las figuras se guardaron exitosamente");
+        }
     }
     @FXML
     private void recuperarXML(ActionEvent event) {
-        openFileChooser();
     }
     @FXML
     private void borrarLienzo(ActionEvent event) {
@@ -70,8 +105,8 @@ public class FXMLDocumentController implements Initializable {
     }
     @FXML
     private void color(ActionEvent event) {
-        Color colorF = colorTF.getValue();
-        Color colorL = colorTL.getValue();
+        colorF = colorTF.getValue();
+        colorL = colorTL.getValue();
         g.setStroke(colorL);
         g2.setStroke(colorL);
         g.setFill(colorF);
@@ -80,11 +115,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void grosor(MouseEvent event) {
         g3.clearRect(0, 0, canvaL.getWidth(), canvaL.getHeight());
-        double valor = slider.getValue();
-        g.setLineWidth(valor);
-        g2.setLineWidth(valor);
-        g3.setLineWidth(valor/2);
-        sText.setText(f.format(valor));
+        grosor = slider.getValue();
+        g.setLineWidth(grosor);
+        g2.setLineWidth(grosor);
+        g3.setLineWidth(grosor/2);
+        sText.setText(f.format(grosor));
         g3.strokeLine(0, canvaL.getHeight()/2, canvaL.getWidth(), canvaL.getHeight()/2);       
     }
     @FXML    
@@ -97,14 +132,19 @@ public class FXMLDocumentController implements Initializable {
         }
         switch(figura){
             case 'A':
+                crearLinea(event);
+                alert.setText("Para realizar lineas precisas presione [SHIFT] mientras arrastra");
                 break;
             case 'B':
+                crearCurva(event);
                 break;
             case 'C':
                 crearElipse(event);
+                alert.setText("Para crear ovalos presione [SHIFT] mientras arrastra");
                 break;
             case 'D':
                 crearCuadrado(event);
+                alert.setText("Para crear rectangulos presione [SHIFT] mientras arrastra");
                 break;
             case 'E':
                 break;
@@ -149,7 +189,9 @@ public class FXMLDocumentController implements Initializable {
             case 'V':
                 break;
             case 'W':
-                break;            
+                break;
+            case 'X':
+                break;  
         }
 
     }
@@ -158,6 +200,8 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        curva = new LinkedList<>();
+        figuras = new LinkedList<>();
         f = new DecimalFormat("#.0");
         estado = false;
         g = canvaId.getGraphicsContext2D();
@@ -178,6 +222,7 @@ public class FXMLDocumentController implements Initializable {
             if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
                 g.strokeOval(x, y, event.getX()-x, event.getY()-y);
                 g.fillOval(x, y, event.getX()-x, event.getY()-y);
+                
                 estado = false;
             } 
         }else{           
@@ -201,9 +246,15 @@ public class FXMLDocumentController implements Initializable {
             g2.strokePolygon(pX, pY, 4);
             g2.fillPolygon(pX, pY, 4);
             if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
-            g.strokePolygon(pX, pY, 4);
-            g.fillPolygon(pX, pY, 4);
-            estado = false;
+                g.strokePolygon(pX, pY, 4);
+                g.fillPolygon(pX, pY, 4);
+                Punto2D[] puntos = new Punto2D[pX.length];
+                for (int i = 0; i < puntos.length; i++) {
+                    puntos[i] = new Punto2D(pX[i],pY[i]);
+                }
+                Figura obj = new Figura("Cuadrado",pX.length,0,grosor,puntos,colorF,colorL);
+                figuras.add(obj);
+                estado = false;
             } 
         }else{           
             double dX = event.getX()-x;
@@ -213,9 +264,15 @@ public class FXMLDocumentController implements Initializable {
             g2.strokePolygon(pX, pY, 4);
             g2.fillPolygon(pX, pY, 4);
             if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
-            g.strokePolygon(pX, pY, 4);
-            g.fillPolygon(pX, pY, 4);
-            estado = false;
+                g.strokePolygon(pX, pY, 4);
+                g.fillPolygon(pX, pY, 4);
+                Punto2D[] puntos = new Punto2D[pX.length];
+                for (int i = 0; i < puntos.length; i++) {
+                    puntos[i] = new Punto2D(pX[i],pY[i]);
+                }
+                Figura obj = new Figura("Cuadrado",pX.length,0,grosor,puntos,colorF,colorL);
+                figuras.add(obj);
+                estado = false;
             }
         }    
     }
@@ -240,6 +297,12 @@ public class FXMLDocumentController implements Initializable {
         if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
             g.strokePolygon(arrCoorX, arrCoorY, arrCoorX.length);
             g.fillPolygon(arrCoorX, arrCoorY, arrCoorX.length);
+            Punto2D[] puntos = new Punto2D[arrCoorX.length];
+            for (int i = 0; i < puntos.length; i++) {
+                puntos[i] = new Punto2D(arrCoorX[i],arrCoorY[i]);
+            }
+            Figura obj = new Figura("Poligono",n,radioFigura,grosor,puntos,colorF,colorL);
+            figuras.add(obj);
             estado = false;        
         }
     }
@@ -267,13 +330,97 @@ public class FXMLDocumentController implements Initializable {
         if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
             g.strokePolygon(arrCoorX, arrCoorY, arrCoorX.length);
             g.fillPolygon(arrCoorX, arrCoorY, arrCoorX.length);
-            estado = false;        
+            Punto2D[] puntos = new Punto2D[arrCoorX.length];
+            for (int i = 0; i < puntos.length; i++) {
+                puntos[i] = new Punto2D(arrCoorX[i],arrCoorY[i]);
+            }
+            Figura obj = new Figura("Estrella",nPuntas,radioExt,grosor,puntos,colorF,colorL);
+            figuras.add(obj);
+            estado = false;
+            
+        }
+        
+    }
+    public void crearLinea(MouseEvent event){
+        double pX = event.getX();
+        double pY = event.getY();
+        
+        if(event.isShiftDown()){
+            double dx = pX - x;
+            double dy = pY - y;
+            double h = Math.sqrt(2)* pX;
+            double dp = dx-dy;
+            if(dp < -20){
+                g2.clearRect(0, 0, canvaId.getWidth(), canvaId.getHeight());
+                g2.strokeLine(x, y, x, pY);
+                if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
+                    g.strokeLine(x, y, x, pY);   
+                    Punto2D[] puntos = {new Punto2D(x,y), new Punto2D(x,pY)};
+                    Figura obj = new Figura("Linea",2,grosor,puntos,colorL);
+                    figuras.add(obj);
+                    estado = false;       
+                  }}
+            else{
+                if(dp > 20){
+                    g2.clearRect(0, 0, canvaId.getWidth(), canvaId.getHeight());
+                    g2.strokeLine(x, y, pX, y);
+                    if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
+                        g.strokeLine(x, y, pX, y);
+                        Punto2D[] puntos = {new Punto2D(x,y), new Punto2D(pX,y)};
+                        Figura obj = new Figura("Linea",2,grosor,puntos,colorL);
+                        figuras.add(obj);
+                        estado = false;       
+                    }
+                }else{
+                    g2.clearRect(0, 0, canvaId.getWidth(), canvaId.getHeight());
+                    g2.strokeLine(x, y, h-y, h-x);
+                    if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
+                        g.strokeLine(x, y, h - y, h - x);
+                        Punto2D[] puntos = {new Punto2D(x,y), new Punto2D(h-y,h-x)};
+                        Figura obj = new Figura("Linea",2,grosor,puntos,colorL);
+                        figuras.add(obj);
+                        estado = false;       
+                    }
+                }}
+        }else{
+            g2.clearRect(0, 0, canvaId.getWidth(), canvaId.getHeight());
+            g2.strokeLine(x, y, pX, pY);
+            if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
+                    g.strokeLine(x, y, pX, pY);
+                    Punto2D[] puntos = {new Punto2D(x,y), new Punto2D(pX,pY)};
+                    Figura obj = new Figura("Linea",2,grosor,puntos,colorL);
+                    figuras.add(obj);                    
+                    estado = false;       
+            }
         }
         
     }
     
-    
-    
+    public void crearCurva(MouseEvent event){  
+//        if(!curva.isEmpty()){
+//            Punto2D ob = new Punto2D(x, y);  
+//            curva.add(ob);
+//        }
+//        int len = curva.size();
+//        double[] pX = new double[len+1];
+//        double[] pY = new double[len+1];
+//        
+//        for (int i = 0; i < len ; i++) {
+//                pX[i] = curva.get(i).getX();
+//                pY[i] = curva.get(i).getY();
+//            }
+//        pX[len] = event.getX();
+//        pY[len] = event.getY();
+//        if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
+//            Punto2D ob1 = new Punto2D(pX[len], pY[len]);
+//            curva.add(ob1);            
+//        }
+//        g2.clearRect(0, 0, canvaId.getWidth(), canvaId.getHeight());
+//        g2.strokeArc(x, y, event.getX()-x, event.getY()-y, 0, 10, ArcType.OPEN);
+//        if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
+//            g.strokeArc(x, y, event.getX()-x, event.getY()-y, 0, 10, ArcType.OPEN);
+//        }
+    }
 }
 
 
