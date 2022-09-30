@@ -249,10 +249,58 @@ public class FXMLDocumentController implements Initializable {
 //        g.strokePolygon(arrCoorX, arrCoorY, arrCoorX.length);
 //------------------------------------------------------------------------------
 
-        //Figura Trueno. Rayo. :)
+//        //Figura Trueno. Rayo. Sale desde la punta inferior derecha hacia arriba. Una hueva mrka. :)
+//        coorX = event.getX();
+//        coorY = event.getY();
+//        int lado = 60;
+//         
+//        arrCoorX = new double[12];
+//        arrCoorY = new double[12];
+//        
+//        arrCoorX[0] = coorX;
+//        arrCoorY[0] = coorY;
+//        
+//        arrCoorX[1] = coorX - lado*Math.sin(-1);
+//        arrCoorY[1] = coorY - (lado*2)*Math.cos(-0.5);
+//        
+//        arrCoorX[2] = coorX;
+//        arrCoorY[2] = coorY - (lado*2)*Math.cos(-0.5);
+//        
+//        arrCoorX[3] = coorX - lado*Math.sin(-1);
+//        arrCoorY[3] = coorY - 2*(lado*2)*Math.cos(-0.5);
+//        
+//        arrCoorX[4] = coorX;
+//        arrCoorY[4] = coorY - 2*(lado*2)*Math.cos(-0.5);
+//        
+//        arrCoorX[5] = coorX - lado*Math.sin(-1);
+//        arrCoorY[5] = coorY - 3*(lado*2)*Math.cos(-0.5);
+//        
+//        arrCoorX[6] = coorX - 0.5*(lado*2)*Math.sin(1.5);
+//        arrCoorY[6] = coorY - 3*(lado*2)*Math.cos(-1.1);
+//        
+//        arrCoorX[7] = coorX - lado*Math.sin(0.3);
+//        arrCoorY[7] = coorY - 2*(lado*2)*Math.cos(-0.8);
+//        
+//        arrCoorX[8] = coorX - 0.5*(lado*2)*Math.sin(1.5);
+//        arrCoorY[8] = coorY - (lado*2)*Math.cos(-0.8) ;
+//        
+//        arrCoorX[9] = coorX - lado*Math.sin(0.3);
+//        arrCoorY[9] = coorY - (lado*2)*Math.cos(-0.8);
+//        
+//        arrCoorX[10] = coorX - lado*Math.sin(2);
+//        arrCoorY[10] = coorY;
+//        
+//        arrCoorX[11] = coorX;
+//        arrCoorY[11] = coorY;
+//                                
+//        g.strokePolygon(arrCoorX, arrCoorY, arrCoorX.length);
+////        
+//------------------------------------------------------------------------------
+
+        //Figura Trueno. Rayo. Sale desde la punta superior izquierda hacia abajo. Este si es. :)
         coorX = event.getX();
         coorY = event.getY();
-        int lado = 40;
+        int lado = 60;
          
         arrCoorX = new double[12];
         arrCoorY = new double[12];
@@ -260,42 +308,40 @@ public class FXMLDocumentController implements Initializable {
         arrCoorX[0] = coorX;
         arrCoorY[0] = coorY;
         
-        arrCoorX[1] = coorX - lado*Math.sin(-1);
-        arrCoorY[1] = coorY - (lado*2)*Math.cos(-0.5);
+        arrCoorX[1] = coorX + lado*Math.sin(2);
+        arrCoorY[1] = coorY;
         
-        arrCoorX[2] = coorX;
-        arrCoorY[2] = coorY - (lado*2)*Math.cos(-0.5);
+        arrCoorX[2] = coorX + lado*Math.sin(0.3);
+        arrCoorY[2] = coorY + (lado*2)*Math.cos(-0.8);
         
-        arrCoorX[3] = coorX - lado*Math.sin(-1);
-        arrCoorY[3] = coorY - 2*(lado*2)*Math.cos(-0.5);
+        arrCoorX[3] = coorX + 0.5*(lado*2)*Math.sin(1.5);
+        arrCoorY[3] = coorY + (lado*2)*Math.cos(-0.8) ;
         
-        arrCoorX[4] = coorX;
-        arrCoorY[4] = coorY - 2*(lado*2)*Math.cos(-0.5);
+        arrCoorX[4] = coorX + lado*Math.sin(0.3);
+        arrCoorY[4] = coorY + 2*(lado*2)*Math.cos(-0.8);
         
-        arrCoorX[5] = coorX - lado*Math.sin(-1);
-        arrCoorY[5] = coorY - 3*(lado*2)*Math.cos(-0.5);
-        
-        arrCoorX[6] = coorX - 0.5*(lado*2)*Math.sin(1);
-        arrCoorY[6] = coorY - 3*(lado*2)*Math.cos(-1);
-        
+        arrCoorX[5] = coorX + 0.5*(lado*2)*Math.sin(1.5);
+        arrCoorY[5] = coorY + 3*(lado*2)*Math.cos(-1.1);
+
+        arrCoorX[6] = coorX + lado*Math.sin(-1);
+        arrCoorY[6] = coorY + 3*(lado*2)*Math.cos(-0.5);
+                
         arrCoorX[7] = coorX;
-        arrCoorY[7] = coorY;
-        
-        arrCoorX[8] = coorX;
-        arrCoorY[8] = coorY;
+        arrCoorY[7] = coorY + 2*(lado*2)*Math.cos(-0.5);
+
+        arrCoorX[8] = coorX + lado*Math.sin(-1);
+        arrCoorY[8] = coorY + 2*(lado*2)*Math.cos(-0.5);
         
         arrCoorX[9] = coorX;
-        arrCoorY[9] = coorY;
+        arrCoorY[9] = coorY + (lado*2)*Math.cos(-0.5);
         
-        arrCoorX[10] = coorX;
-        arrCoorY[10] = coorY;
+        arrCoorX[10] = coorX + lado*Math.sin(-1);
+        arrCoorY[10] = coorY + (lado*2)*Math.cos(-0.5);
         
         arrCoorX[11] = coorX;
         arrCoorY[11] = coorY;
                                 
-        g.strokePolygon(arrCoorX, arrCoorY, arrCoorX.length);
-        
-//------------------------------------------------------------------------------
+//        g.strokePolygon(arrCoorX, arrCoorY, arrCoorX.length);
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
