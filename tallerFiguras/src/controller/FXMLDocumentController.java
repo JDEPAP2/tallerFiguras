@@ -22,19 +22,18 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.ArcType;
-import javafx.scene.text.Text;
 import model.Figura;
 import model.Punto2D;
 import static model.Utilidad.*;
-
+import javafx.scene.text.Text;
+import static model.Tools.*;
 
 /**
  *
  * @author Juan
  */
 public class FXMLDocumentController implements Initializable {
-    
+
     @FXML
     private Text  t1,t2,t3,t4,t5;
     @FXML
@@ -191,7 +190,7 @@ public class FXMLDocumentController implements Initializable {
             case 'W':
                 break;
             case 'X':
-                break;  
+                break;            
         }
 
     }
@@ -393,7 +392,6 @@ public class FXMLDocumentController implements Initializable {
                     estado = false;       
             }
         }
-        
     }
     
     public void crearCurva(MouseEvent event){  
