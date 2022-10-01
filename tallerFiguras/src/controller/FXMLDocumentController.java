@@ -521,49 +521,80 @@ public class FXMLDocumentController implements Initializable {
 
 //------------------------------------------------------------------------------
 
-        //Corazón.
-        coorX = event.getX();
-        coorY = event.getY();
-        int lado = 150;
-        int angulo = lado/2;
-        
-        int semicirculoax = (int) (coorX + (lado*0.3));
-        int semicirculoay = (int) (coorY + (lado)*Math.sin(-0.3));
-        
-        int semicirculobx = (int) (coorX + (lado*0.8));
-        int semicirculoby = (int) (coorY + (lado)*Math.sin(-0.3));
-        
-        double[] arrCoorXa = new double[2];
-        double[] arrCoorYa = new double[2];
-        
-        arrCoorXa[0] = coorX + (lado*0.3);
-        arrCoorYa[0] = coorY + (lado)*Math.sin(0);
-        
-        arrCoorXa[1] = coorX + (lado*0.8);
-        arrCoorYa[1] = coorY + (lado)*Math.sin(0.9);
-        
-        double[] arrCoorXb = new double[2];
-        double[] arrCoorYb = new double[2];
-        
-        arrCoorXb[0] = coorX + (lado*0.8);
-        arrCoorYb[0] = coorY + (lado)*Math.sin(0.9);
-        
-        arrCoorXb[1] = coorX + (lado*1.3);
-        arrCoorYb[1] = coorY + (lado)*Math.sin(0);
-        
-        g.strokeArc(semicirculoax, semicirculoay, angulo, angulo, 0, 195, ArcType.OPEN);
-        g.strokeArc(semicirculobx, semicirculoby, angulo, angulo, -15, 195, ArcType.OPEN);
-        g.strokePolygon(arrCoorXa, arrCoorYa, arrCoorXa.length);
-        g.strokePolygon(arrCoorXb, arrCoorYb, arrCoorXb.length);
-        
+//        //Bocadillo 3.
+//        coorX = event.getX();
+//        coorY = event.getY();
+//        int lado = 150;
+//        int angulo = (int) (lado*1.5);
+//
+//        double[] arrCoorXa = new double[2];
+//        double[] arrCoorYa = new double[2];
+//        
+//        arrCoorXa[0] = coorX + (lado*0.2);
+//        arrCoorYa[0] = coorY + (lado*1.41)*Math.sin(1);
+//        
+//        arrCoorXa[1] = coorX + (lado*0.1);
+//        arrCoorYa[1] = coorY + (lado*2.2)*Math.sin(1);
+//        
+//        double[] arrCoorXb = new double[2];
+//        double[] arrCoorYb = new double[2];
+//        
+//        arrCoorXb[0] = coorX + (lado*0.1);
+//        arrCoorYb[0] = coorY + (lado*2.2)*Math.sin(1);
+//        
+//        arrCoorXb[1] = coorX + 0.45*(lado*2)*Math.cos(1);
+//        arrCoorYb[1] = coorY + (lado*1.7)*Math.sin(1);
+//        
+//        int angulopartax = (int) coorX;
+//        int angulopartay = (int) coorY;
+//        
+//        g.strokeArc(angulopartax, angulopartay, angulo, angulo, 90, 130, ArcType.OPEN);
+//        g.strokeArc(angulopartax, angulopartay, angulo, angulo, 250, 240, ArcType.OPEN);
+//        g.strokePolygon(arrCoorXa, arrCoorYa, arrCoorXa.length);
+//        g.strokePolygon(arrCoorXb, arrCoorYb, arrCoorXb.length);
 
+
+//------------------------------------------------------------------------------
+
+//        //Corazón.
+//        coorX = event.getX();
+//        coorY = event.getY();
+//        int lado = 150;
+//        int angulo = lado/2;
+//        
+//        int semicirculoax = (int) (coorX + (lado*0.3));
+//        int semicirculoay = (int) (coorY + (lado)*Math.sin(-0.3));
+//        
+//        int semicirculobx = (int) (coorX + (lado*0.8));
+//        int semicirculoby = (int) (coorY + (lado)*Math.sin(-0.3));
+//        
+//        double[] arrCoorXa = new double[2];
+//        double[] arrCoorYa = new double[2];
+//        
+//        arrCoorXa[0] = coorX + (lado*0.3);
+//        arrCoorYa[0] = coorY + (lado)*Math.sin(0);
+//        
+//        arrCoorXa[1] = coorX + (lado*0.8);
+//        arrCoorYa[1] = coorY + (lado)*Math.sin(0.9);
+//        
+//        double[] arrCoorXb = new double[2];
+//        double[] arrCoorYb = new double[2];
+//        
+//        arrCoorXb[0] = coorX + (lado*0.8);
+//        arrCoorYb[0] = coorY + (lado)*Math.sin(0.9);
+//        
+//        arrCoorXb[1] = coorX + (lado*1.3);
+//        arrCoorYb[1] = coorY + (lado)*Math.sin(0);
+//        
+//        g.strokeArc(semicirculoax, semicirculoay, angulo, angulo, 0, 195, ArcType.OPEN);
+//        g.strokeArc(semicirculobx, semicirculoby, angulo, angulo, -15, 195, ArcType.OPEN);
+//        g.strokePolygon(arrCoorXa, arrCoorYa, arrCoorXa.length);
+//        g.strokePolygon(arrCoorXb, arrCoorYb, arrCoorXb.length);
+        
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------
-
-//------------------------------------------------------------------------------
 
       }
 
