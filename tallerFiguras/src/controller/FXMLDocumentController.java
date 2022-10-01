@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.ArcType;
 import javax.swing.JOptionPane;
 import modelo.Punto2D;
 
@@ -297,53 +298,133 @@ public class FXMLDocumentController implements Initializable {
 ////        
 //------------------------------------------------------------------------------
 
-        //Figura Trueno. Rayo. Sale desde la punta superior izquierda hacia abajo. Este si es. :)
-        coorX = event.getX();
-        coorY = event.getY();
-        int lado = 60;
-         
-        arrCoorX = new double[12];
-        arrCoorY = new double[12];
-        
-        arrCoorX[0] = coorX;
-        arrCoorY[0] = coorY;
-        
-        arrCoorX[1] = coorX + lado*Math.sin(2);
-        arrCoorY[1] = coorY;
-        
-        arrCoorX[2] = coorX + lado*Math.sin(0.3);
-        arrCoorY[2] = coorY + (lado*2)*Math.cos(-0.8);
-        
-        arrCoorX[3] = coorX + 0.5*(lado*2)*Math.sin(1.5);
-        arrCoorY[3] = coorY + (lado*2)*Math.cos(-0.8) ;
-        
-        arrCoorX[4] = coorX + lado*Math.sin(0.3);
-        arrCoorY[4] = coorY + 2*(lado*2)*Math.cos(-0.8);
-        
-        arrCoorX[5] = coorX + 0.5*(lado*2)*Math.sin(1.5);
-        arrCoorY[5] = coorY + 3*(lado*2)*Math.cos(-1.1);
-
-        arrCoorX[6] = coorX + lado*Math.sin(-1);
-        arrCoorY[6] = coorY + 3*(lado*2)*Math.cos(-0.5);
-                
-        arrCoorX[7] = coorX;
-        arrCoorY[7] = coorY + 2*(lado*2)*Math.cos(-0.5);
-
-        arrCoorX[8] = coorX + lado*Math.sin(-1);
-        arrCoorY[8] = coorY + 2*(lado*2)*Math.cos(-0.5);
-        
-        arrCoorX[9] = coorX;
-        arrCoorY[9] = coorY + (lado*2)*Math.cos(-0.5);
-        
-        arrCoorX[10] = coorX + lado*Math.sin(-1);
-        arrCoorY[10] = coorY + (lado*2)*Math.cos(-0.5);
-        
-        arrCoorX[11] = coorX;
-        arrCoorY[11] = coorY;
-                                
+//        //Figura Trueno. Rayo. Sale desde la punta superior izquierda hacia abajo. Este si es. :)
+//        coorX = event.getX();
+//        coorY = event.getY();
+//        int lado = 40;
+//         
+//        arrCoorX = new double[12];
+//        arrCoorY = new double[12];
+//        
+//        arrCoorX[0] = coorX;
+//        arrCoorY[0] = coorY;
+//        
+//        arrCoorX[1] = coorX + lado*Math.sin(2);
+//        arrCoorY[1] = coorY;
+//        
+//        arrCoorX[2] = coorX + lado*Math.sin(0.3);
+//        arrCoorY[2] = coorY + (lado*2)*Math.cos(-0.8);
+//        
+//        arrCoorX[3] = coorX + 0.5*(lado*2)*Math.sin(1.5);
+//        arrCoorY[3] = coorY + (lado*2)*Math.cos(-0.8) ;
+//        
+//        arrCoorX[4] = coorX + lado*Math.sin(0.3);
+//        arrCoorY[4] = coorY + 2*(lado*2)*Math.cos(-0.8);
+//        
+//        arrCoorX[5] = coorX + 0.5*(lado*2)*Math.sin(1.5);
+//        arrCoorY[5] = coorY + 3*(lado*2)*Math.cos(-1.1);
+//
+//        arrCoorX[6] = coorX + lado*Math.sin(-1);
+//        arrCoorY[6] = coorY + 3*(lado*2)*Math.cos(-0.5);
+//                
+//        arrCoorX[7] = coorX;
+//        arrCoorY[7] = coorY + 2*(lado*2)*Math.cos(-0.5);
+//
+//        arrCoorX[8] = coorX + lado*Math.sin(-1);
+//        arrCoorY[8] = coorY + 2*(lado*2)*Math.cos(-0.5);
+//        
+//        arrCoorX[9] = coorX;
+//        arrCoorY[9] = coorY + (lado*2)*Math.cos(-0.5);
+//        
+//        arrCoorX[10] = coorX + lado*Math.sin(-1);
+//        arrCoorY[10] = coorY + (lado*2)*Math.cos(-0.5);
+//        
+//        arrCoorX[11] = coorX;
+//        arrCoorY[11] = coorY;
+//                                
 //        g.strokePolygon(arrCoorX, arrCoorY, arrCoorX.length);
 //------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
+
+        //Figura Redondeadas.
+        coorX = event.getX();
+        coorY = event.getY();
+        int lado = 120;
+        int angulo = lado;
+
+        double[] arrCoorXa = new double[2];
+        double[] arrCoorYa = new double[2];
+        
+        arrCoorXa[0] = coorX;
+        arrCoorYa[0] = coorY;
+        
+        arrCoorXa[1] = coorX + 2*(lado*2)*Math.cos(1);
+        arrCoorYa[1] = coorY;
+        
+        double[] arrCoorXb = new double[2];
+        double[] arrCoorYb = new double[2];
+        
+        arrCoorXb[0] = coorX + 0.5*(lado*2)*Math.cos(1);
+        arrCoorYb[0] = coorY + (lado*2)*Math.sin(1);
+        
+        arrCoorXb[1] = coorX + 2*(lado*2)*Math.cos(1);
+        arrCoorYb[1] = coorY + (lado*2)*Math.sin(1);
+
+        double[] arrCoorXba = new double[2];
+        double[] arrCoorYba = new double[2];
+        
+        arrCoorXba[0] = coorX;
+        arrCoorYba[0] = coorY + (lado*2)*Math.sin(1);
+        
+        arrCoorXba[1] = coorX;
+        arrCoorYba[1] = coorY + (lado*2.5)*Math.sin(1);
+        
+        double[] arrCoorXbb = new double[2];
+        double[] arrCoorYbb = new double[2];
+        
+        arrCoorXbb[0] = coorX;
+        arrCoorYbb[0] = coorY + (lado*2.5)*Math.sin(1);
+        
+        arrCoorXbb[1] = coorX + 0.5*(lado*2)*Math.cos(1);
+        arrCoorYbb[1] = coorY + (lado*2)*Math.sin(1);
+        
+        double[] arrCoorXc = new double[2];
+        double[] arrCoorYc = new double[2];
+        
+        arrCoorXc[0] = coorX + (lado*-0.5);
+        arrCoorYc[0] = coorY + (lado*0.5);
+        
+        arrCoorXc[1] = coorX + (lado*-0.5);
+        arrCoorYc[1] = coorY + (lado*1.16);
+        
+        double[] arrCoorXd = new double[2];
+        double[] arrCoorYd = new double[2];
+        
+        arrCoorXd[0] = coorX + (lado*2.6);
+        arrCoorYd[0] = coorY + (lado*0.5);
+        
+        arrCoorXd[1] = coorX + (lado*2.6);
+        arrCoorYd[1] = coorY + (lado*1.16);
+        
+        int angulosupader = (int) (coorX + (lado*1.6));
+        int angulosupaizq = (int) (coorX + (lado*-0.5));
+        
+        int anguloinfbizqx = (int) (coorX + (lado*-0.5));
+        int anguloinfbizqy = (int) (coorY + (lado*0.69));
+        
+        int anguloinfbderx = (int) (coorX + (lado*1.6));
+        int anguloinfbdery = (int) (coorY + (lado*0.69));
+        
+        g.strokePolygon(arrCoorXa, arrCoorYa, arrCoorXa.length);
+        g.strokePolygon(arrCoorXb, arrCoorYb, arrCoorXb.length);
+        g.strokePolygon(arrCoorXba, arrCoorYba, arrCoorXba.length);
+        g.strokePolygon(arrCoorXbb, arrCoorYbb, arrCoorXbb.length);
+        g.strokePolygon(arrCoorXc, arrCoorYc, arrCoorXc.length);
+        g.strokePolygon(arrCoorXd, arrCoorYd, arrCoorXd.length);
+        
+        g.strokeArc(angulosupaizq, arrCoorYa[0], angulo, angulo, 90, 90, ArcType.OPEN);
+        g.strokeArc(anguloinfbizqx, anguloinfbizqy, angulo, angulo, 270, -90, ArcType.OPEN);
+        g.strokeArc(angulosupader, arrCoorYa[0], angulo, angulo, 90, -90, ArcType.OPEN);
+        g.strokeArc(anguloinfbderx, anguloinfbdery, angulo, angulo, 270, 90, ArcType.OPEN);
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
