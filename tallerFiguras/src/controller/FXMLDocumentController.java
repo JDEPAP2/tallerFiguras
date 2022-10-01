@@ -593,6 +593,98 @@ public class FXMLDocumentController implements Initializable {
         
 //------------------------------------------------------------------------------
 
+//        //Pacman.
+//        coorX = event.getX();
+//        coorY = event.getY();
+//        int lado = 150;
+//        int angulo = (int) (lado*1.5);
+//
+//        double[] arrCoorXa = new double[2];
+//        double[] arrCoorYa = new double[2];
+//        
+//        arrCoorXa[0] = coorX + (lado*1.43);
+//        arrCoorYa[0] = coorY + (lado*0.5)*Math.sin(1);
+//        
+//        arrCoorXa[1] = coorX + (lado*0.6);
+//        arrCoorYa[1] = coorY + (lado*0.8)*Math.sin(1);
+//        
+//        double[] arrCoorXb = new double[2];
+//        double[] arrCoorYb = new double[2];
+//        
+//        arrCoorXb[0] = coorX + (lado*0.6);
+//        arrCoorYb[0] = coorY + (lado*0.8)*Math.sin(1);
+//        
+//        arrCoorXb[1] = coorX + (lado*1.40);
+//        arrCoorYb[1] = coorY + (lado*1.36)*Math.sin(1);
+//        
+//        int angulopartax = (int) coorX;
+//        int angulopartay = (int) coorY;
+//        
+//        g.strokeArc(angulopartax, angulopartay, angulo, angulo, 30, 300, ArcType.OPEN);
+//        g.strokePolygon(arrCoorXa, arrCoorYa, arrCoorXa.length);
+//        g.strokePolygon(arrCoorXb, arrCoorYb, arrCoorXb.length);
+
+
+        //Cuadrado Redondeado.
+        coorX = event.getX();
+        coorY = event.getY();
+        int lado = 120;
+        int angulo = lado;
+
+        double[] arrCoorXa = new double[2];
+        double[] arrCoorYa = new double[2];
+        
+        arrCoorXa[0] = coorX;
+        arrCoorYa[0] = coorY;
+        
+        arrCoorXa[1] = coorX + 2*(lado*2)*Math.cos(1);
+        arrCoorYa[1] = coorY;
+        
+        double[] arrCoorXb = new double[2];
+        double[] arrCoorYb = new double[2];
+        
+        arrCoorXb[0] = coorX;
+        arrCoorYb[0] = coorY + (lado*2)*Math.sin(1);
+        
+        arrCoorXb[1] = coorX + 2*(lado*2)*Math.cos(1);
+        arrCoorYb[1] = coorY + (lado*2)*Math.sin(1);
+        
+        double[] arrCoorXc = new double[2];
+        double[] arrCoorYc = new double[2];
+        
+        arrCoorXc[0] = coorX + (lado*-0.5);
+        arrCoorYc[0] = coorY + (lado*0.5);
+        
+        arrCoorXc[1] = coorX + (lado*-0.5);
+        arrCoorYc[1] = coorY + (lado*1.16);
+        
+        double[] arrCoorXd = new double[2];
+        double[] arrCoorYd = new double[2];
+        
+        arrCoorXd[0] = coorX + (lado*2.6);
+        arrCoorYd[0] = coorY + (lado*0.5);
+        
+        arrCoorXd[1] = coorX + (lado*2.6);
+        arrCoorYd[1] = coorY + (lado*1.16);
+        
+        int angulosupader = (int) (coorX + (lado*1.6));
+        int angulosupaizq = (int) (coorX + (lado*-0.5));
+        
+        int anguloinfbizqx = (int) (coorX + (lado*-0.5));
+        int anguloinfbizqy = (int) (coorY + (lado*0.69));
+        
+        int anguloinfbderx = (int) (coorX + (lado*1.6));
+        int anguloinfbdery = (int) (coorY + (lado*0.69));
+        
+        g.strokePolygon(arrCoorXa, arrCoorYa, arrCoorXa.length);
+        g.strokePolygon(arrCoorXb, arrCoorYb, arrCoorXb.length);
+        g.strokePolygon(arrCoorXc, arrCoorYc, arrCoorXc.length);
+        g.strokePolygon(arrCoorXd, arrCoorYd, arrCoorXd.length);
+        
+        g.strokeArc(angulosupaizq, arrCoorYa[0], angulo, angulo, 90, 90, ArcType.OPEN);
+        g.strokeArc(anguloinfbizqx, anguloinfbizqy, angulo, angulo, 270, -90, ArcType.OPEN);
+        g.strokeArc(angulosupader, arrCoorYa[0], angulo, angulo, 90, -90, ArcType.OPEN);
+        g.strokeArc(anguloinfbderx, anguloinfbdery, angulo, angulo, 270, 90, ArcType.OPEN);
 //------------------------------------------------------------------------------
 
 
