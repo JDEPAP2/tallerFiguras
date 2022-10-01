@@ -427,99 +427,142 @@ public class FXMLDocumentController implements Initializable {
 //        g.strokeArc(anguloinfbderx, anguloinfbdery, angulo, angulo, 270, 90, ArcType.OPEN);
 //------------------------------------------------------------------------------
 
-        //Bocadillo 2.
+//        //Bocadillo 2.
+//        coorX = event.getX();
+//        coorY = event.getY();
+//        int lado = 90;
+//        int angulo = lado/2;
+//
+//        double[] arrCoorXa = new double[2];
+//        double[] arrCoorYa = new double[2];
+//        
+//        arrCoorXa[0] = coorX + (lado*0.1);
+//        arrCoorYa[0] = coorY + (lado*1.6)*Math.sin(1);
+//        
+//        arrCoorXa[1] = coorX + (lado*0.1);
+//        arrCoorYa[1] = coorY + (lado*2.2)*Math.sin(1);
+//        
+//        double[] arrCoorXb = new double[2];
+//        double[] arrCoorYb = new double[2];
+//        
+//        arrCoorXb[0] = coorX + (lado*0.1);
+//        arrCoorYb[0] = coorY + (lado*2.2)*Math.sin(1);
+//        
+//        arrCoorXb[1] = coorX + 0.5*(lado*2)*Math.cos(1);
+//        arrCoorYb[1] = coorY + (lado*1.6)*Math.sin(1);
+//
+//        
+//        int angulosupaderx = (int) (coorX + (lado*1.6));
+//        int angulosupadery = (int) coorY;
+//        
+//        int angulosupaizqx = (int) (coorX + (lado*-0.5));
+//        int angulosupaizqy = (int) coorY;  
+//        
+//        int anguloinfbizqx = (int) (coorX + (lado*-0.5));
+//        int anguloinfbizqy = (int) (coorY + (lado*0.59));
+//        
+//        int anguloinfbderx = (int) (coorX + (lado*1.6));
+//        int anguloinfbdery = (int) (coorY + (lado*0.59));
+//        
+//        
+//        int semicirculoax = (int) (coorX + (lado*-0.2));
+//        int semicirculoay = (int) (coorY + (lado)*Math.sin(-0.25));
+//        
+//        int semicirculobx = (int) (coorX + (lado*0.3));
+//        int semicirculoby = (int) (coorY + (lado)*Math.sin(-0.25));
+//        
+//        int semicirculocx = (int) (coorX + (lado*0.8));
+//        int semicirculocy = (int) (coorY + (lado)*Math.sin(-0.25));
+//        
+//        int semicirculodx = (int) (coorX + (lado*1.3));
+//        int semicirculody = (int) (coorY + (lado)*Math.sin(-0.25));
+//
+//        
+//        int semicirculoaxd = (int) (coorX + (lado*-0.2));
+//        int semicirculoayd = (int) (coorY + (lado)*Math.sin(1));
+//        
+//        int semicirculobxd = (int) (coorX + (lado*0.3));
+//        int semicirculobyd = (int) (coorY + (lado)*Math.sin(1));
+//        
+//        int semicirculocxd = (int) (coorX + (lado*0.8));
+//        int semicirculocyd = (int) (coorY + (lado)*Math.sin(1));
+//        
+//        int semicirculodxd = (int) (coorX + (lado*1.3));
+//        int semicirculodyd = (int) (coorY + (lado)*Math.sin(1));
+//        
+//        
+//        int semicirculoaxl = (int) (coorX + (lado*-0.75));
+//        int semicirculoayl = (int) (coorY + (lado*0.3));
+//        
+//        int semicirculoaxr = (int) (coorX + (lado*1.85));
+//        int semicirculoayr = (int) (coorY + (lado*0.3));
+//                
+//        
+//        g.strokePolygon(arrCoorXa, arrCoorYa, arrCoorXa.length);
+//        g.strokePolygon(arrCoorXb, arrCoorYb, arrCoorXb.length);
+//        
+//        g.strokeArc(angulosupaizqx, angulosupaizqy, angulo, angulo, 90, 90, ArcType.OPEN);
+//        g.strokeArc(anguloinfbizqx, anguloinfbizqy, angulo, angulo, 270, -90, ArcType.OPEN);
+//        g.strokeArc(angulosupaderx, angulosupadery, angulo, angulo, 90, -90, ArcType.OPEN);
+//        g.strokeArc(anguloinfbderx, anguloinfbdery, angulo, angulo, 270, 90, ArcType.OPEN);
+//        
+//        g.strokeArc(semicirculoax, semicirculoay, angulo, angulo, 0, 180, ArcType.OPEN);
+//        g.strokeArc(semicirculobx, semicirculoby, angulo, angulo, 0, 180, ArcType.OPEN);
+//        g.strokeArc(semicirculocx, semicirculocy, angulo, angulo, 0, 180, ArcType.OPEN);
+//        g.strokeArc(semicirculodx, semicirculody, angulo, angulo, 0, 180, ArcType.OPEN);  
+//        
+//        g.strokeArc(semicirculoaxd, semicirculoayd, angulo, angulo, 180, 90, ArcType.OPEN);
+//        g.strokeArc(semicirculobxd, semicirculobyd, angulo, angulo, 270, 90, ArcType.OPEN);
+//        g.strokeArc(semicirculocxd, semicirculocyd, angulo, angulo, 180, 180, ArcType.OPEN);
+//        g.strokeArc(semicirculodxd, semicirculodyd, angulo, angulo, 180, 180, ArcType.OPEN); 
+//        
+//        g.strokeArc(semicirculoaxl, semicirculoayl, angulo, angulo, 90, 180, ArcType.OPEN);
+//        g.strokeArc(semicirculoaxr, semicirculoayr, angulo, angulo, 270, 180, ArcType.OPEN);
+
+//------------------------------------------------------------------------------
+
+        //Corazón.
         coorX = event.getX();
         coorY = event.getY();
-        int lado = 90;
+        int lado = 150;
         int angulo = lado/2;
-
+        
+        int semicirculoax = (int) (coorX + (lado*0.3));
+        int semicirculoay = (int) (coorY + (lado)*Math.sin(-0.3));
+        
+        int semicirculobx = (int) (coorX + (lado*0.8));
+        int semicirculoby = (int) (coorY + (lado)*Math.sin(-0.3));
+        
         double[] arrCoorXa = new double[2];
         double[] arrCoorYa = new double[2];
         
-        arrCoorXa[0] = coorX + (lado*0.1);
-        arrCoorYa[0] = coorY + (lado*1.6)*Math.sin(1);
+        arrCoorXa[0] = coorX + (lado*0.3);
+        arrCoorYa[0] = coorY + (lado)*Math.sin(0);
         
-        arrCoorXa[1] = coorX + (lado*0.1);
-        arrCoorYa[1] = coorY + (lado*2.2)*Math.sin(1);
+        arrCoorXa[1] = coorX + (lado*0.8);
+        arrCoorYa[1] = coorY + (lado)*Math.sin(0.9);
         
         double[] arrCoorXb = new double[2];
         double[] arrCoorYb = new double[2];
         
-        arrCoorXb[0] = coorX + (lado*0.1);
-        arrCoorYb[0] = coorY + (lado*2.2)*Math.sin(1);
+        arrCoorXb[0] = coorX + (lado*0.8);
+        arrCoorYb[0] = coorY + (lado)*Math.sin(0.9);
         
-        arrCoorXb[1] = coorX + 0.5*(lado*2)*Math.cos(1);
-        arrCoorYb[1] = coorY + (lado*1.6)*Math.sin(1);
-
+        arrCoorXb[1] = coorX + (lado*1.3);
+        arrCoorYb[1] = coorY + (lado)*Math.sin(0);
         
-        int angulosupaderx = (int) (coorX + (lado*1.6));
-        int angulosupadery = (int) coorY;
-        
-        int angulosupaizqx = (int) (coorX + (lado*-0.5));
-        int angulosupaizqy = (int) coorY;  
-        
-        int anguloinfbizqx = (int) (coorX + (lado*-0.5));
-        int anguloinfbizqy = (int) (coorY + (lado*0.59));
-        
-        int anguloinfbderx = (int) (coorX + (lado*1.6));
-        int anguloinfbdery = (int) (coorY + (lado*0.59));
-        
-        
-        int semicirculoax = (int) (coorX + (lado*-0.2));
-        int semicirculoay = (int) (coorY + (lado)*Math.sin(-0.25));
-        
-        int semicirculobx = (int) (coorX + (lado*0.3));
-        int semicirculoby = (int) (coorY + (lado)*Math.sin(-0.25));
-        
-        int semicirculocx = (int) (coorX + (lado*0.8));
-        int semicirculocy = (int) (coorY + (lado)*Math.sin(-0.25));
-        
-        int semicirculodx = (int) (coorX + (lado*1.3));
-        int semicirculody = (int) (coorY + (lado)*Math.sin(-0.25));
-
-        
-        int semicirculoaxd = (int) (coorX + (lado*-0.2));
-        int semicirculoayd = (int) (coorY + (lado)*Math.sin(1));
-        
-        int semicirculobxd = (int) (coorX + (lado*0.3));
-        int semicirculobyd = (int) (coorY + (lado)*Math.sin(1));
-        
-        int semicirculocxd = (int) (coorX + (lado*0.8));
-        int semicirculocyd = (int) (coorY + (lado)*Math.sin(1));
-        
-        int semicirculodxd = (int) (coorX + (lado*1.3));
-        int semicirculodyd = (int) (coorY + (lado)*Math.sin(1));
-        
-        
-        int semicirculoaxl = (int) (coorX + (lado*-0.75));
-        int semicirculoayl = (int) (coorY + (lado*0.3));
-        
-        int semicirculoaxr = (int) (coorX + (lado*1.85));
-        int semicirculoayr = (int) (coorY + (lado*0.3));
-                
-        
+        g.strokeArc(semicirculoax, semicirculoay, angulo, angulo, 0, 195, ArcType.OPEN);
+        g.strokeArc(semicirculobx, semicirculoby, angulo, angulo, -15, 195, ArcType.OPEN);
         g.strokePolygon(arrCoorXa, arrCoorYa, arrCoorXa.length);
         g.strokePolygon(arrCoorXb, arrCoorYb, arrCoorXb.length);
         
-        g.strokeArc(angulosupaizqx, angulosupaizqy, angulo, angulo, 90, 90, ArcType.OPEN);
-        g.strokeArc(anguloinfbizqx, anguloinfbizqy, angulo, angulo, 270, -90, ArcType.OPEN);
-        g.strokeArc(angulosupaderx, angulosupadery, angulo, angulo, 90, -90, ArcType.OPEN);
-        g.strokeArc(anguloinfbderx, anguloinfbdery, angulo, angulo, 270, 90, ArcType.OPEN);
-        
-        g.strokeArc(semicirculoax, semicirculoay, angulo, angulo, 0, 180, ArcType.OPEN);
-        g.strokeArc(semicirculobx, semicirculoby, angulo, angulo, 0, 180, ArcType.OPEN);
-        g.strokeArc(semicirculocx, semicirculocy, angulo, angulo, 0, 180, ArcType.OPEN);
-        g.strokeArc(semicirculodx, semicirculody, angulo, angulo, 0, 180, ArcType.OPEN);  
-        
-        g.strokeArc(semicirculoaxd, semicirculoayd, angulo, angulo, 180, 90, ArcType.OPEN);
-        g.strokeArc(semicirculobxd, semicirculobyd, angulo, angulo, 270, 90, ArcType.OPEN);
-        g.strokeArc(semicirculocxd, semicirculocyd, angulo, angulo, 180, 180, ArcType.OPEN);
-        g.strokeArc(semicirculodxd, semicirculodyd, angulo, angulo, 180, 180, ArcType.OPEN); 
-        
-        g.strokeArc(semicirculoaxl, semicirculoayl, angulo, angulo, 90, 180, ArcType.OPEN);
-        g.strokeArc(semicirculoaxr, semicirculoayr, angulo, angulo, 270, 180, ArcType.OPEN);
 
 //------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+
 //------------------------------------------------------------------------------
 
       }
